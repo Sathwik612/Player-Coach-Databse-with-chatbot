@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from "react";
 import axios from "axios";
-import "./GameSenseiAI.css"; // Ensure this file exists with your provided CSS
+import "./GameSenseiAI.css"; // Ensure this file exists
 
 const GameSenseiAI = ({ playerId }) => {
   const [messages, setMessages] = useState([]);
@@ -15,22 +15,41 @@ const GameSenseiAI = ({ playerId }) => {
 
   const sendMessage = async () => {
     if (!input.trim()) return;
+    
+    if (!playerId) {
+      console.error("❌ No playerId provided!");
+      setMessages((prev) => [
+        ...prev,
+        { role: "assistant", content: "⚠️ Player ID missing. Cannot process request." },
+      ]);
+      return;
+    }
 
     const userMessage = { role: "user", content: input };
-    setMessages([...messages, userMessage]);
+    setMessages((prev) => [...prev, userMessage]);
 
     try {
+      console.log("🚀 Sending request to AI Chatbot:", { message: input, playerId });
+
       const response = await axios.post("http://localhost:5000/api/chatbot", {
         message: input,
-        playerId: playerId, // Send player ID to store AI insights
+        playerId,
       });
+      console.log("🚀 Sending request to AI Chatbot:", { message: input, playerId });
+
+
+      console.log("✅ AI Reply:", response.data);
+
+      if (!response.data || !response.data.reply) {
+        throw new Error("Empty AI response");
+      }
 
       const aiReply = { role: "assistant", content: response.data.reply };
-      setMessages((prevMessages) => [...prevMessages, aiReply]);
+      setMessages((prev) => [...prev, aiReply]);
     } catch (error) {
-      console.error("AI Chatbot Error:", error);
-      setMessages((prevMessages) => [
-        ...prevMessages,
+      console.error("❌ AI Chatbot Error:", error);
+      setMessages((prev) => [
+        ...prev,
         { role: "assistant", content: "⚠️ AI response failed. Try again later." },
       ]);
     }

@@ -1,0 +1,83 @@
+/* GameSensei AI Chat UI */
+.ai-chat-container {
+    background-color: #1e1e2f;
+    color: white;
+    padding: 20px;
+    border-radius: 10px;
+    width: 50%;
+    margin: auto;
+    text-align: center;
+    box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.3);
+}
+
+.chat-box {
+    height: 300px;
+    overflow-y: auto;
+    background: #29293d;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+.chat-box::-webkit-scrollbar {
+    width: 8px;
+}
+
+.chat-box::-webkit-scrollbar-thumb {
+    background: #f39c12;
+    border-radius: 4px;
+}
+
+p.user {
+    text-align: right;
+    color: #34c3eb;
+    background: rgba(52, 195, 235, 0.2);
+    padding: 8px;
+    border-radius: 10px;
+    display: inline-block;
+    max-width: 80%;
+    margin: 5px 0;
+}
+
+p.assistant {
+    text-align: left;
+    color: #f39c12;
+    background: rgba(243, 156, 18, 0.2);
+    padding: 8px;
+    border-radius: 10px;
+    display: inline-block;
+    max-width: 80%;
+    margin: 5px 0;
+}
+
+.input-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+input {
+    width: 70%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background: #3b3b58;
+    color: white;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    background: #f39c12;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #e67e22;
+}

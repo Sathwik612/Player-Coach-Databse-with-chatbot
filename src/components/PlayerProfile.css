@@ -1,0 +1,109 @@
+/* Player Profile Page */
+.player-profile-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 20px;
+    background-color: #1a1a2e;
+    color: white;
+    min-height: 100vh;
+}
+
+/* Player Card */
+.player-card {
+    background: #16213e;
+    padding: 20px;
+    border-radius: 10px;
+    text-align: center;
+    width: 40%;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.3);
+}
+
+.player-card img {
+    width: 100px;
+    height: 100px;
+    border-radius: 50%;
+    margin-bottom: 10px;
+}
+
+.player-card h2 {
+    color: #f39c12;
+}
+
+.player-card p {
+    font-size: 16px;
+    margin: 5px 0;
+}
+
+/* AI Chatbox */
+.ai-chat-container {
+    margin-top: 20px;
+    width: 50%;
+    background: #222244;
+    padding: 15px;
+    border-radius: 10px;
+    text-align: center;
+}
+
+.chat-box {
+    height: 250px;
+    overflow-y: auto;
+    background: #29293d;
+    padding: 10px;
+    border-radius: 5px;
+    margin-bottom: 15px;
+    text-align: left;
+}
+
+p.user {
+    text-align: right;
+    color: #34c3eb;
+    background: rgba(52, 195, 235, 0.2);
+    padding: 8px;
+    border-radius: 10px;
+    display: inline-block;
+    max-width: 80%;
+    margin: 5px 0;
+}
+
+p.assistant {
+    text-align: left;
+    color: #f39c12;
+    background: rgba(243, 156, 18, 0.2);
+    padding: 8px;
+    border-radius: 10px;
+    display: inline-block;
+    max-width: 80%;
+    margin: 5px 0;
+}
+
+.input-container {
+    display: flex;
+    gap: 10px;
+    justify-content: center;
+}
+
+input {
+    width: 70%;
+    padding: 10px;
+    border-radius: 5px;
+    border: none;
+    background: #3b3b58;
+    color: white;
+    font-size: 16px;
+}
+
+button {
+    padding: 10px 15px;
+    border-radius: 5px;
+    border: none;
+    background: #f39c12;
+    color: white;
+    cursor: pointer;
+    font-size: 16px;
+    font-weight: bold;
+}
+
+button:hover {
+    background: #e67e22;
+}

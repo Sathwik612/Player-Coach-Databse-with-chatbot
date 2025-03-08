@@ -4,7 +4,7 @@ import Login from "./components/Login";
 import Dashboard from "./components/Dashboard";
 import PlayerProfile from "./components/PlayerProfile";
 
-function App() {
+const App = () => {
   return (
     <Router>
       <Routes>
@@ -14,6 +14,6 @@ function App() {
       </Routes>
     </Router>
   );
-}
+};
 
 export default App;

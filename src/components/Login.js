@@ -20,14 +20,14 @@ const Login = () => {
       console.log("🚀 Attempting login with email:", email);
 
       const response = await axios.post("http://localhost:5000/api/coaches/login", { email, password });
-
       console.log("✅ Login successful:", response.data);
 
       const { coachId, token } = response.data;
+      // Store login details in localStorage
       localStorage.setItem("coachId", coachId);
       localStorage.setItem("token", token);
 
-      navigate("/dashboard"); // Redirect to Dashboard
+      navigate("/dashboard"); // Redirect to Dashboard after login
     } catch (error) {
       console.error("❌ Login failed:", error.response ? error.response.data : error.message);
       setError(error.response?.data?.message || "Invalid email or password.");
@@ -39,16 +39,50 @@ const Login = () => {
   return (
     <Container maxWidth="xs">
       <Paper elevation={6} sx={{ padding: "30px", borderRadius: "10px", marginTop: "100px" }}>
-        <Typography variant="h4" gutterBottom align="center" sx={{ fontWeight: "bold" }}>Coach Login</Typography>
+        <Typography variant="h4" gutterBottom align="center" sx={{ fontWeight: "bold" }}>
+          Coach Login
+        </Typography>
 
-        {error && <Typography color="error" align="center" sx={{ mb: 2 }}>{error}</Typography>}
+        {error && (
+          <Typography color="error" align="center" sx={{ mb: 2 }}>
+            {error}
+          </Typography>
+        )}
 
         <form onSubmit={handleLogin}>
-          <TextField fullWidth label="Email" variant="outlined" margin="normal" value={email} onChange={(e) => setEmail(e.target.value)} />
-          <TextField fullWidth label="Password" type="password" variant="outlined" margin="normal" value={password} onChange={(e) => setPassword(e.target.value)} />
+          <TextField
+            fullWidth
+            label="Email"
+            variant="outlined"
+            margin="normal"
+            value={email}
+            onChange={(e) => setEmail(e.target.value)}
+          />
+          <TextField
+            fullWidth
+            label="Password"
+            type="password"
+            variant="outlined"
+            margin="normal"
+            value={password}
+            onChange={(e) => setPassword(e.target.value)}
+          />
 
           <Box sx={{ display: "flex", justifyContent: "center", mt: 2 }}>
-            <Button type="submit" variant="contained" color="primary" fullWidth disabled={loading}>
+            <Button
+              type="submit"
+              variant="contained"
+              color="primary"
+              fullWidth
+              disabled={loading}
+              sx={{
+                fontWeight: "bold",
+                textTransform: "none",
+                borderRadius: "8px",
+                backgroundColor: "#1976D2",
+                "&:hover": { backgroundColor: "#1565C0" },
+              }}
+            >
               {loading ? <CircularProgress size={24} color="inherit" /> : "Login"}
             </Button>
           </Box>
